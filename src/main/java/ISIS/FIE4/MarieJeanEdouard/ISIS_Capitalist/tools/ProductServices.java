@@ -14,16 +14,19 @@ public class ProductServices {
         this.worldServices = new WorldServices();
     }
 
-    /** prend en paramètre le pseudo du joueur et le produit
-     *sur lequel une action a eu lieu (lancement manuel de production ou 
-     *achat d’une certaine quantité de produit)
-     *renvoie false si l’action n’a pas pu être traitée 
-     * @param username = pseudo du joueur 
+    /**
+     * prend en paramètre le pseudo du joueur et le produit sur lequel une
+     * action a eu lieu (lancement manuel de production ou achat d’une certaine
+     * quantité de produit) renvoie false si l’action n’a pas pu être traitée
+     *
+     * @param username = pseudo du joueur
      * @param newproduct = produit client
      */
     public Boolean updateProduct(String username, ProductType newproduct) throws JAXBException, FileNotFoundException {
         // aller chercher le monde qui correspond au joueur
-        World world = worldServices.getWorld(username);
+//        World world = worldServices.getWorld(username);
+        World world = worldServices.getWorld();
+
         // trouver dans ce monde, le produit équivalent à celui passé
         // en paramètre
         ProductType product = findProductById(world, newproduct.getId());

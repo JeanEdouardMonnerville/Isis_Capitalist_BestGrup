@@ -15,14 +15,16 @@ public class WorldServices {
     public WorldServices() {
     }
 
-    public World readWorldFromXml(String pseudo) {
+//    public World readWorldFromXml(String pseudo) {
+            public World readWorldFromXml() {
+
         World result = null;
         try {
             JAXBContext context = JAXBContext.newInstance(World.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
-            InputStream input = getClass().getClassLoader().getResourceAsStream(pseudo+"-world.xml");
-           // InputStream input = getClass().getClassLoader().getResourceAsStream("World.xml");
+            //InputStream input = getClass().getClassLoader().getResourceAsStream(pseudo+"-world.xml");
+            InputStream input = getClass().getClassLoader().getResourceAsStream("World.xml");
             result = (World) unmarshaller.unmarshal(input);
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,8 +42,14 @@ public class WorldServices {
         marshaller.marshal(world, output);
     }
 
-    public World getWorld(String pseudo) {
-        return readWorldFromXml(pseudo);
+//    public World getWorld(String pseudo) {
+//        return readWorldFromXml(pseudo);
+//    }
+    public World getWorld() {
+        return readWorldFromXml();
     }
 
+    public void deleteworld() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

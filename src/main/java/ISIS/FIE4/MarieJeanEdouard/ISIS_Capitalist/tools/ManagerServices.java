@@ -23,7 +23,9 @@ public class ManagerServices {
 // renvoie false si l’action n’a pas pu être traitée 
     public Boolean updateManager(String username, PallierType newmanager) throws JAXBException, FileNotFoundException {
         // aller chercher le monde qui correspond au joueur
-        World world = worldServices.getWorld(username);
+//        World world = worldServices.getWorld(username);
+        World world = worldServices.getWorld();
+
         // trouver dans ce monde, le manager équivalent à celui passé
         // en paramètre
         PallierType manager = findManagerByName(world, newmanager.getName());
@@ -40,15 +42,15 @@ public class ManagerServices {
         // débloquer le manager de ce produit
         manager.setUnlocked(true);
         // soustraire de l'argent du joueur le cout du manager
-        world.setMoney(world.getMoney()-manager.getSeuil());//TBD
+        world.setMoney(world.getMoney() - manager.getSeuil());//TBD
         // sauvegarder les changements au monde
         worldServices.saveWorldToXml(world, username);
         return true;
     }
 
     private PallierType findManagerByName(World world, String name) {
-        for(PallierType pt : world.getManagers().getPallier()){
-            if(name==pt.getName()){
+        for (PallierType pt : world.getManagers().getPallier()) {
+            if (name == pt.getName()) {
                 return pt;
             }
         }
