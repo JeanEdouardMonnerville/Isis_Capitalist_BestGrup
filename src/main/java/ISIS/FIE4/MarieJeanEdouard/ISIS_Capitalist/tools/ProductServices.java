@@ -23,8 +23,9 @@ public class ProductServices {
      * @param newproduct = produit client
      */
     public Boolean updateProduct(String username, ProductType newproduct) throws JAXBException, FileNotFoundException {
+       
         // aller chercher le monde qui correspond au joueur
-//        World world = worldServices.getWorld(username);
+        // World world = worldServices.getWorld(username);
         World world = worldServices.getWorld();
 
         // trouver dans ce monde, le produit équivalent à celui passé
