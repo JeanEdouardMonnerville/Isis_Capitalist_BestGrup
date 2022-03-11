@@ -40,11 +40,13 @@ public class ProductServices {
         int qtchange = newproduct.getQuantite() - product.getQuantite();
         if (qtchange > 0) {
             // soustraire de l'argent du joueur le cout de la quantité
-            world.setMoney(world.getMoney() - newproduct.getCout()*qtchange);
+            world.setMoney(world.getMoney() - newproduct.getCout() * qtchange);
             // achetée et mettre à jour la quantité de product
             product.setQuantite(newproduct.getQuantite());
             // mise à jour du coût du produit 
-            product.setCout(product.getCout()+product.getCroissance());
+            product.setCout(product.getCout() + product.getCroissance() * product.getCout());
+            //mise à jour du score 
+            world.setScore(world.getScore() + product.getRevenu());
         } else {
             // initialiser product.timeleft à product.vitesse
             // pour lancer la production

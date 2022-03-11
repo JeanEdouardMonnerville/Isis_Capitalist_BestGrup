@@ -12,11 +12,13 @@ import javax.xml.bind.Unmarshaller;
 
 public class WorldServices {
 
+    private GenericResources tool = new GenericResources();
+
     public WorldServices() {
     }
 
 //    public World readWorldFromXml(String pseudo) {
-            public World readWorldFromXml() {
+    public World readWorldFromXml() {
 
         World result = null;
         try {
@@ -29,7 +31,7 @@ public class WorldServices {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        tool.updateScore(result);
         return result;
     }
 
@@ -46,6 +48,7 @@ public class WorldServices {
 //        return readWorldFromXml(pseudo);
 //    }
     public World getWorld() {
+        
         return readWorldFromXml();
     }
 
