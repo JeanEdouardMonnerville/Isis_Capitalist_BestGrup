@@ -20,10 +20,10 @@ public class ManagerServices {
     }
 
     // prend en paramètre le pseudo du joueur et le manager acheté.
-// renvoie false si l’action n’a pas pu être traitée 
+    // renvoie false si l’action n’a pas pu être traitée 
     public Boolean updateManager(String username, PallierType newmanager) throws JAXBException, FileNotFoundException {
         // aller chercher le monde qui correspond au joueur
-//        World world = worldServices.getWorld(username);
+        //World world = worldServices.getWorld(username);
         World world = worldServices.getWorld();
 
         // trouver dans ce monde, le manager équivalent à celui passé
@@ -42,7 +42,7 @@ public class ManagerServices {
         // débloquer le manager de ce produit
         manager.setUnlocked(true);
         // soustraire de l'argent du joueur le cout du manager
-        world.setMoney(world.getMoney() - manager.getSeuil());//TBD
+        world.setMoney(world.getMoney() - manager.getSeuil());
         // sauvegarder les changements au monde
         worldServices.saveWorldToXml(world, username);
         return true;
