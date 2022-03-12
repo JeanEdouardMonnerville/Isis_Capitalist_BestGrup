@@ -39,27 +39,29 @@ public class ProductServices {
         // sinon c’est qu’il s’agit d’un lancement de production.
         int qtchange = newproduct.getQuantite() - product.getQuantite();
         if (qtchange > 0) {
-            // soustraire de l'argent du joueur le cout de la quantité
-            double cout=0;
-            for(int i = product.getQuantite();i< newproduct.getQuantite();i++){
-                cout=+ coutDachatDesProduits(product, i);
+            //calcule cout
+            double cout = 0;
+            for (int i = product.getQuantite(); i < newproduct.getQuantite(); i++) {
+                cout = +coutDachatDesProduits(product, i);
             }
-            
-            world.setMoney(world.getMoney() - cout);
-            
-            
-            
-            // achetée et mettre à jour la quantité de product
-            product.setQuantite(newproduct.getQuantite());
-            worldServices.checkUpgradeIsAvailable(world);
-            // mise à jour du coût du produit 
-            product.setCout(product.getCout() + product.getCroissance() * product.getCout());
-            //mise à jour du score 
-            world.setScore(world.getScore() + product.getRevenu());
+            if (world.getMoney() > cout) {
+                // soustraire de l'argent du joueur le cout de la quantité
+                world.setMoney(world.getMoney() - cout);
+                // achetée et mettre à jour la quantité de product
+                product.setQuantite(newproduct.getQuantite());
+                worldServices.checkUpgradeIsAvailable(world);
+
+            }
         } else {
+            //Revenu à :
+            
             // initialiser product.timeleft à product.vitesse
             // pour lancer la production
             product.setTimeleft(product.getVitesse());
+            //mise à jour de l'argent gagné grâce à la production
+            world.setMoney(world.getMoney() + calculRevenu(product, newproduct.getQuantite()));
+            //mise à jour du score
+            world.setScore(world.getScore() + calculRevenu(product, newproduct.getQuantite()));
         }
         // sauvegarder les changements du monde
         worldServices.saveWorldToXml(world, username);
@@ -74,14 +76,16 @@ public class ProductServices {
         }
         return null;
     }
-    
-    public double coutDachatDesProduits(ProductType product,int qte){
-        return product.getCout()*Math.pow(product.getCroissance(),qte-1);
+
+    public double coutDachatDesProduits(ProductType product, int qte) {
+        return product.getCout() * Math.pow(product.getCroissance(), qte - 1);
     }
     
-
-    
-    
-    
+    private double calculRevenu(ProductType product,int qte){
+        double result=0;
+        result=product.getRevenu()*qte;
+        
+        return result;
+    }
 
 }

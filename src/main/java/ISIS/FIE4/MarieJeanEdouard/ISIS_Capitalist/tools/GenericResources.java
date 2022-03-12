@@ -17,7 +17,7 @@ public class GenericResources {
     public PallierType convertJSONToPallierType(String json) {
         return new Gson().fromJson(json, PallierType.class);
     }
-    
+
     //Fonction excécuter dans WorldServices.readWorldFromXml()
     public void updateScore(World world) {
         //temps écoulé depuis la dernière connexion
@@ -28,44 +28,45 @@ public class GenericResources {
             for (ProductType product : world.getProducts().getProduct()) {
 
                 if (product.isManagerUnlocked()) {
-                    //Calcul du quotient 
+                    //Calcul de la quantite de production
                     int quantiteProduit = (int) (deltaTime / product.getVitesse());
-                    //Mise à jour de la quantite du produit 
-                    product.setQuantite(product.getQuantite() + quantiteProduit);
+
                     //Mise à jour des gains gagnés pendant l'inaction
-                    world.setScore(world.getScore() + product.getRevenu() * quantiteProduit);
-                    
-                    product.setCout(product.getCout() + product.getCroissance() * product.getCout()*quantiteProduit);
-                    
+                    world.setScore(world.getScore() + calculRevenu(product, quantiteProduit));
+                    world.setMoney(world.getMoney() + calculRevenu(product, quantiteProduit));
                     //On calcule le temps de production effectué + le reste de 
                     //la division euclidienne correspondant au temps qui ne 
                     //permet pas de produire un nouveau produit.
                     long majTimeleft = (product.getVitesse() - product.getTimeleft())
                             + (deltaTime % product.getVitesse());
-                    
+
                     if (majTimeleft > product.getVitesse()) {
-                        //Mise à jour de la quantite du produit 
-                        product.setQuantite(product.getQuantite() + 1);
+
                         //Mise à jour des gains gagnés pendant l'inaction
-                        world.setScore(world.getScore() + product.getRevenu());
+                        world.setScore(world.getScore() + calculRevenu(product, 1));
+                        world.setMoney(world.getMoney() + calculRevenu(product, 1));
                         //Mise à jour time left
-                        product.setTimeleft(product.getVitesse()-majTimeleft);
-                        product.setCout(product.getCout() + product.getCroissance() * product.getCout());
-                    }else{
+                        product.setTimeleft(product.getVitesse() - majTimeleft);
+                    } else {
                         product.setTimeleft(majTimeleft);
                     }
                 } else {
                     if (product.getTimeleft() != 0 & product.getTimeleft() < 0) {
-                        //Mise à jour de la quantite du produit 
-                        product.setQuantite(product.getQuantite() + 1);
-                        product.setCout(product.getCout() + product.getCroissance() * product.getCout());
                         //Mise à jour des gains gagnés pendant l'inaction
-                        world.setScore(world.getScore() + product.getRevenu());
+                        world.setScore(world.getScore() + calculRevenu(product, 1));
+                        world.setMoney(world.getMoney() + calculRevenu(product, 1));
                     } else {
                         product.setTimeleft(product.getTimeleft() - deltaTime);
                     }
                 }
             }
         }
+
+    }
+
+    private double calculRevenu(ProductType product, int qte) {
+        double result = 0;
+        result = product.getRevenu() * qte;
+        return result;
     }
 }
