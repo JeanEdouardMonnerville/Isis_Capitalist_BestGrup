@@ -35,6 +35,7 @@ public class WebServiceWorld {
     @Path("world")
     @Consumes({"application/xml", "application/json"})
     public void deleteWorld(@Context HttpServletRequest request) {
-        services.deleteworld();
+        String username = request.getHeader("X-user");
+        services.deleteworld(username);
     }
 }
