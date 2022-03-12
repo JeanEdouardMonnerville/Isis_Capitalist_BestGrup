@@ -63,8 +63,27 @@ public class WorldServices {
         return readWorldFromXml(pseudo);
     }
 
-    public void deleteworld() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteworld(String pseudo) {
+        try {
+            JAXBContext cont = JAXBContext.newInstance(World.class);
+            Marshaller m = cont.createMarshaller();
+            
+            //Récupération des données du monde initial
+            InputStream input = getClass().getClassLoader().getResourceAsStream("World.xml");
+            Unmarshaller unmarshaller = cont.createUnmarshaller();
+            World world = (World) unmarshaller.unmarshal(input);
+            
+            File file = new File(filePath + pseudo + "-world.xml");
+            if (file.exists()) {
+                m.marshal(world, file);
+            } else {
+                OutputStream output = new FileOutputStream(filePath + pseudo + "-world.xml");
+                m.marshal(world, output);
+                output.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //Fonction qui vérifie que le seuil pour débloquer un upgrade global est atteint et l'applique 
