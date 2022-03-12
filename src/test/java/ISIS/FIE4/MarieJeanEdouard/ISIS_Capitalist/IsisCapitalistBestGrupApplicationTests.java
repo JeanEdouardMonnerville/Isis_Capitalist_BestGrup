@@ -21,7 +21,7 @@ import static  org.hamcrest.Matchers.*;
 
 
 public class IsisCapitalistBestGrupApplicationTests {
-    String serviceUrl = "http://localhost:8080/AdventureISIS/webresources/generic/";
+    String serviceUrl = "http://localhost:8081/AdventureISIS/webresources/generic/";
     String uniqueID;
 
     public IsisCapitalistBestGrupApplicationTests() {
