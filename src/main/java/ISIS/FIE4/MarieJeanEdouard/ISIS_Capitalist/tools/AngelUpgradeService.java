@@ -22,6 +22,8 @@ public class AngelUpgradeService {
         }
 
         if (world.getActiveangels() > angelUpgrade.getSeuil()) {
+            //On enregistre les anges gagné
+            world.setTotalangels(world.getTotalangels()+world.getActiveangels());
             //On soustrait le coût de l'ange
             world.setTotalangels(world.getActiveangels() - angelUpgrade.getSeuil());
             //On indique qu'il est déblocké
