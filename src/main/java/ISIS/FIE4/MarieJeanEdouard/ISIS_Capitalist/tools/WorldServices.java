@@ -65,22 +65,24 @@ public class WorldServices {
 
     public void deleteworld(String pseudo) {
         try {
-            JAXBContext cont = JAXBContext.newInstance(World.class);
-            Marshaller m = cont.createMarshaller();
-            
             //Récupération des données du monde initial
+            JAXBContext cont = JAXBContext.newInstance(World.class);
             InputStream input = getClass().getClassLoader().getResourceAsStream("World.xml");
             Unmarshaller unmarshaller = cont.createUnmarshaller();
-            World world = (World) unmarshaller.unmarshal(input);
+            World NewWorld = (World) unmarshaller.unmarshal(input);
             
-            File file = new File(filePath + pseudo + "-world.xml");
-            if (file.exists()) {
-                m.marshal(world, file);
-            } else {
-                OutputStream output = new FileOutputStream(filePath + pseudo + "-world.xml");
-                m.marshal(world, output);
-                output.close();
-            }
+            //Récupération des données du monde actuel
+            InputStream input2 = getClass().getClassLoader().getResourceAsStream(pseudo+"-world.xml");
+            Unmarshaller unmarshaller2 = cont.createUnmarshaller();
+            World OldWorld = (World) unmarshaller.unmarshal(input2);
+            
+            //On garde les anges et le score
+            NewWorld.setScore(OldWorld.getScore());
+            NewWorld.setActiveangels(OldWorld.getActiveangels());
+            NewWorld.setTotalangels(OldWorld.getTotalangels());
+            
+            saveWorldToXml(NewWorld, pseudo);
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
