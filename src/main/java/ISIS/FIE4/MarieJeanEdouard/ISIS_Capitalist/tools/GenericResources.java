@@ -32,8 +32,8 @@ public class GenericResources {
                     int quantiteProduit = (int) (deltaTime / product.getVitesse());
 
                     //Mise à jour des gains gagnés pendant l'inaction
-                    world.setScore(world.getScore() + calculRevenu(product, quantiteProduit));
-                    world.setMoney(world.getMoney() + calculRevenu(product, quantiteProduit));
+                    world.setScore(world.getScore() + calculRevenu(product, quantiteProduit,world));
+                    world.setMoney(world.getMoney() + calculRevenu(product, quantiteProduit,world));
                     //On calcule le temps de production effectué + le reste de 
                     //la division euclidienne correspondant au temps qui ne 
                     //permet pas de produire un nouveau produit.
@@ -43,8 +43,8 @@ public class GenericResources {
                     if (majTimeleft > product.getVitesse()) {
 
                         //Mise à jour des gains gagnés pendant l'inaction
-                        world.setScore(world.getScore() + calculRevenu(product, 1));
-                        world.setMoney(world.getMoney() + calculRevenu(product, 1));
+                        world.setScore(world.getScore() + calculRevenu(product, 1,world));
+                        world.setMoney(world.getMoney() + calculRevenu(product, 1,world));
                         //Mise à jour time left
                         product.setTimeleft(product.getVitesse() - majTimeleft);
                     } else {
@@ -53,8 +53,8 @@ public class GenericResources {
                 } else {
                     if (product.getTimeleft() != 0 & product.getTimeleft() < 0) {
                         //Mise à jour des gains gagnés pendant l'inaction
-                        world.setScore(world.getScore() + calculRevenu(product, 1));
-                        world.setMoney(world.getMoney() + calculRevenu(product, 1));
+                        world.setScore(world.getScore() + calculRevenu(product, 1,world));
+                        world.setMoney(world.getMoney() + calculRevenu(product, 1,world));
                     } else {
                         product.setTimeleft(product.getTimeleft() - deltaTime);
                     }
@@ -64,9 +64,14 @@ public class GenericResources {
 
     }
 
-    private double calculRevenu(ProductType product, int qte) {
+    private double calculRevenu(ProductType product, int qte,World world) {
         double result = 0;
         result = product.getRevenu() * qte;
+
+        //Ajout de l'impact des anges 
+        if (world.getActiveangels() >= 1) {
+            result = result * (1 + world.getActiveangels() * world.getAngelbonus() / 100);
+        }
         return result;
     }
 }

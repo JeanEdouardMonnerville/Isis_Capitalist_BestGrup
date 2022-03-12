@@ -39,6 +39,7 @@ public class WorldServices {
         }
         tool.updateScore(result);
         checkUpgradeIsAvailable(result);
+        calculNbAngeActif(result);
         return result;
     }
 
@@ -131,6 +132,14 @@ public class WorldServices {
 
     private void applyAngeUpgrade(PallierType upgrade, World world) {
         world.setAngelbonus((int) (world.getAngelbonus()+upgrade.getRatio()));
+    }
+    
+    //angeActif = 150 x rac(score/10^15)-nombre total ange
+    private double calculNbAngeActif(World world){
+        double result = 150;
+        result=result* Math.pow((world.getScore()/Math.pow(10,15)),0.5);
+        result=result-world.getTotalangels();
+        return result; 
     }
 
 }

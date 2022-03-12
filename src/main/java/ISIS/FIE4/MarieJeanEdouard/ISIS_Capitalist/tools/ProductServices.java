@@ -59,9 +59,9 @@ public class ProductServices {
             // pour lancer la production
             product.setTimeleft(product.getVitesse());
             //mise à jour de l'argent gagné grâce à la production
-            world.setMoney(world.getMoney() + calculRevenu(product, newproduct.getQuantite()));
+            world.setMoney(world.getMoney() + calculRevenu(product, newproduct.getQuantite(),world));
             //mise à jour du score
-            world.setScore(world.getScore() + calculRevenu(product, newproduct.getQuantite()));
+            world.setScore(world.getScore() + calculRevenu(product, newproduct.getQuantite(),world));
         }
         // sauvegarder les changements du monde
         worldServices.saveWorldToXml(world, username);
@@ -81,10 +81,13 @@ public class ProductServices {
         return product.getCout() * Math.pow(product.getCroissance(), qte - 1);
     }
     
-    private double calculRevenu(ProductType product,int qte){
+    private double calculRevenu(ProductType product,int qte,World world){
         double result=0;
         result=product.getRevenu()*qte;
-        
+        //Ajout de l'impact des anges 
+        if(world.getActiveangels()>=1){
+            result=result*(1+world.getActiveangels()*world.getAngelbonus()/100);
+        }
         return result;
     }
 
