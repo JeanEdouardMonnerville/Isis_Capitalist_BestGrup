@@ -21,7 +21,7 @@ import static  org.hamcrest.Matchers.*;
 
 
 public class IsisCapitalistBestGrupApplicationTests {
-    String serviceUrl = "http://localhost:8081/AdventureISIS/webresources/generic/";
+    String serviceUrl = "http://localhost:8081/adventureisis/generic/";
     String uniqueID;
 
     public IsisCapitalistBestGrupApplicationTests() {
@@ -80,6 +80,7 @@ public class IsisCapitalistBestGrupApplicationTests {
         System.out.println("Testing : checkXMLValidation");
         // teste si le monde retourné au format XML est bien conforme au schéma
         given().header("Accept", "application/xml").when().get(serviceUrl + "world").then().assertThat().body(matchesXsd(getSystemResourceAsStream("worldSchema.xsd")));
+        System.err.println("");
     }
 
     @Test
