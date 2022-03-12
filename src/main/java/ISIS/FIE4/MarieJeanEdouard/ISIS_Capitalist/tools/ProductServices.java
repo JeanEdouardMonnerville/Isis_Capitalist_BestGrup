@@ -49,19 +49,18 @@ public class ProductServices {
                 world.setMoney(world.getMoney() - cout);
                 // achetée et mettre à jour la quantité de product
                 product.setQuantite(newproduct.getQuantite());
+                checkIfUnlockIsAvailable(product, world);
                 worldServices.checkUpgradeIsAvailable(world);
 
             }
         } else {
-            //Revenu à :
-            
             // initialiser product.timeleft à product.vitesse
             // pour lancer la production
             product.setTimeleft(product.getVitesse());
             //mise à jour de l'argent gagné grâce à la production
-            world.setMoney(world.getMoney() + calculRevenu(product, newproduct.getQuantite(),world));
+            world.setMoney(world.getMoney() + calculRevenu(product, newproduct.getQuantite(), world));
             //mise à jour du score
-            world.setScore(world.getScore() + calculRevenu(product, newproduct.getQuantite(),world));
+            world.setScore(world.getScore() + calculRevenu(product, newproduct.getQuantite(), world));
         }
         // sauvegarder les changements du monde
         worldServices.saveWorldToXml(world, username);
@@ -80,15 +79,50 @@ public class ProductServices {
     public double coutDachatDesProduits(ProductType product, int qte) {
         return product.getCout() * Math.pow(product.getCroissance(), qte - 1);
     }
-    
-    private double calculRevenu(ProductType product,int qte,World world){
-        double result=0;
-        result=product.getRevenu()*qte;
+
+    private double calculRevenu(ProductType product, int qte, World world) {
+        double result = 0;
+        result = product.getRevenu() * qte;
         //Ajout de l'impact des anges 
-        if(world.getActiveangels()>=1){
-            result=result*(1+world.getActiveangels()*world.getAngelbonus()/100);
+        if (world.getActiveangels() >= 1) {
+            result = result * (1 + world.getActiveangels() * world.getAngelbonus() / 100);
         }
         return result;
     }
+    
+    public boolean checkIfUnlockIsAvailable(ProductType product,World world){
+        for(PallierType pt:product.getPalliers().getPallier()){
+            if(product.getQuantite()>=pt.getSeuil() && pt.isUnlocked()==false){
+                pt.setUnlocked(true);
+                switch(pt.getTyperatio()){
+                    case GAIN:
+                        applyUpgradeGain(pt, product);
+                        break;
+                    case VITESSE:
+                        applyUpgradeVitesse(pt, product);
+                        break;
+                    case ANGE:
+                        applyAngeUpgrade(pt, world);
+                        break;
+                }
+            }
+        }
+        
+        return true;
+    }
 
+    public void applyUpgradeGain(PallierType upgrade, ProductType product) {
+        product.setRevenu(product.getRevenu() * upgrade.getRatio());
+        upgrade.setUnlocked(true);
+    }
+
+    public void applyUpgradeVitesse(PallierType upgrade, ProductType product) {
+        product.setRevenu(product.getTimeleft() * upgrade.getRatio());
+        upgrade.setUnlocked(true);
+    }
+
+    private void applyAngeUpgrade(PallierType upgrade, World world) {
+        world.setAngelbonus((int) (world.getAngelbonus() + upgrade.getRatio()));
+        upgrade.setUnlocked(true);
+    }
 }

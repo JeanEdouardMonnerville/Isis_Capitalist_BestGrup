@@ -99,8 +99,7 @@ public class WorldServices {
             }
         }
         for (PallierType upgrade : world.getAllunlocks().getPallier()) {
-            if (minQte > upgrade.getSeuil()) {
-                upgrade.setUnlocked(true);
+            if (minQte > upgrade.getSeuil() && upgrade.isUnlocked() == false) {
                 switch (upgrade.getTyperatio()) {
                     case GAIN:
                         applyUpgradeForAllGain(upgrade, world);
@@ -109,37 +108,38 @@ public class WorldServices {
                         applyUpgradeForAllVitesse(upgrade, world);
                         break;
                     case ANGE:
-                        applyAngeUpgrade(upgrade,world);
+                        applyAngeUpgrade(upgrade, world);
                         break;
                 }
             }
         }
     }
 
-
-
     public void applyUpgradeForAllGain(PallierType upgrade, World world) {
         for (ProductType product : world.getProducts().getProduct()) {
             product.setRevenu(product.getRevenu() * upgrade.getRatio());
         }
+        upgrade.setUnlocked(true);
     }
 
     public void applyUpgradeForAllVitesse(PallierType upgrade, World world) {
         for (ProductType product : world.getProducts().getProduct()) {
             product.setRevenu(product.getTimeleft() * upgrade.getRatio());
         }
+        upgrade.setUnlocked(true);
     }
 
     private void applyAngeUpgrade(PallierType upgrade, World world) {
-        world.setAngelbonus((int) (world.getAngelbonus()+upgrade.getRatio()));
+        world.setAngelbonus((int) (world.getAngelbonus() + upgrade.getRatio()));
+        upgrade.setUnlocked(true);
     }
-    
+
     //angeActif = 150 x rac(score/10^15)-nombre total ange
-    private double calculNbAngeActif(World world){
+    private double calculNbAngeActif(World world) {
         double result = 150;
-        result=result* Math.pow((world.getScore()/Math.pow(10,15)),0.5);
-        result=result-world.getTotalangels();
-        return result; 
+        result = result * Math.pow((world.getScore() / Math.pow(10, 15)), 0.5);
+        result = result - world.getTotalangels();
+        return result;
     }
 
 }

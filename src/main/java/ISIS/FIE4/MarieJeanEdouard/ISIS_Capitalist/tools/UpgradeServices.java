@@ -23,25 +23,23 @@ public class UpgradeServices {
         productServices = new ProductServices();
     }
 
-    //Indication d'un upgrade atteint pour un produit
+    //Achat d'un cash upgrade
     public boolean updateUpgrade(PallierType newUpgrade, String username) throws JAXBException, FileNotFoundException {
         World world = worldServices.getWorld(username);
         ProductType product = productServices.findProductById(world, newUpgrade.getIdcible());
-        if (product == null) {
-            return false;
-        }
-        PallierType upgrade = findUpgradeByName(newUpgrade.getName(), product);
+
+        PallierType upgrade = findUpgradeByName(newUpgrade.getName(), world);
         if (upgrade == null) {
             return false;
         }
 
-        if (product.getQuantite() > upgrade.getSeuil()) {
+        if (world.getMoney() > upgrade.getSeuil() && upgrade.isUnlocked()==false) {
             switch (upgrade.getTyperatio()) {
                 case GAIN:
-                    applyUpgradeGain(upgrade, product);
+                    applyUpgradeForAllGain(upgrade, world);
                     break;
                 case VITESSE:
-                    applyUpgradeVitesse(upgrade, product);
+                    applyUpgradeForAllVitesse(upgrade, world);
                     break;
                 case ANGE:
                     applyAngeUpgrade(upgrade, world);
@@ -52,24 +50,25 @@ public class UpgradeServices {
         return true;
     }
 
-    public void applyUpgradeGain(PallierType upgrade, ProductType product) {
-        product.setRevenu(product.getRevenu() * upgrade.getRatio());
-        upgrade.setUnlocked(true);
+    public void applyUpgradeForAllGain(PallierType upgrade, World world) {
+        for (ProductType product : world.getProducts().getProduct()) {
+            product.setRevenu(product.getRevenu() * upgrade.getRatio());
+        }
     }
 
-    public void applyUpgradeVitesse(PallierType upgrade, ProductType product) {
-        product.setRevenu(product.getTimeleft() * upgrade.getRatio());
-        upgrade.setUnlocked(true);
+    public void applyUpgradeForAllVitesse(PallierType upgrade, World world) {
+        for (ProductType product : world.getProducts().getProduct()) {
+            product.setRevenu(product.getTimeleft() * upgrade.getRatio());
+        }
     }
 
     private void applyAngeUpgrade(PallierType upgrade, World world) {
         world.setAngelbonus((int) (world.getAngelbonus() + upgrade.getRatio()));
-        upgrade.setUnlocked(true);
     }
 
-    private PallierType findUpgradeByName(String name, ProductType product) {
+    private PallierType findUpgradeByName(String name, World world) {
         PallierType result = null;
-        for (PallierType pt : product.getPalliers().getPallier()) {
+        for (PallierType pt : world.getUpgrades().getPallier()) {
             if (pt.getName().equals(name)) {
                 result = pt;
             }
