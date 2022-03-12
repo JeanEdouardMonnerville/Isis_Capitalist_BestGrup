@@ -70,19 +70,19 @@ public class WorldServices {
             InputStream input = getClass().getClassLoader().getResourceAsStream("World.xml");
             Unmarshaller unmarshaller = cont.createUnmarshaller();
             World NewWorld = (World) unmarshaller.unmarshal(input);
-            
+
             //Récupération des données du monde actuel
-            InputStream input2 = getClass().getClassLoader().getResourceAsStream(pseudo+"-world.xml");
+            InputStream input2 = getClass().getClassLoader().getResourceAsStream(pseudo + "-world.xml");
             Unmarshaller unmarshaller2 = cont.createUnmarshaller();
             World OldWorld = (World) unmarshaller.unmarshal(input2);
-            
+
             //On garde les anges et le score
             NewWorld.setScore(OldWorld.getScore());
             NewWorld.setActiveangels(OldWorld.getActiveangels());
             NewWorld.setTotalangels(OldWorld.getTotalangels());
-            
+
             saveWorldToXml(NewWorld, pseudo);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,10 +107,15 @@ public class WorldServices {
                     case VITESSE:
                         applyUpgradeForAllVitesse(upgrade, world);
                         break;
+                    case ANGE:
+                        applyAngeUpgrade(upgrade,world);
+                        break;
                 }
             }
         }
     }
+
+
 
     public void applyUpgradeForAllGain(PallierType upgrade, World world) {
         for (ProductType product : world.getProducts().getProduct()) {
@@ -122,6 +127,10 @@ public class WorldServices {
         for (ProductType product : world.getProducts().getProduct()) {
             product.setRevenu(product.getTimeleft() * upgrade.getRatio());
         }
+    }
+
+    private void applyAngeUpgrade(PallierType upgrade, World world) {
+        world.setAngelbonus((int) (world.getAngelbonus()+upgrade.getRatio()));
     }
 
 }
