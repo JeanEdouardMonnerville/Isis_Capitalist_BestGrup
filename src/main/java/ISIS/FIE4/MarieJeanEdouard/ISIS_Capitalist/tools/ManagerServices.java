@@ -4,6 +4,7 @@ import generated.PallierType;
 import generated.ProductType;
 import generated.World;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.xml.bind.JAXBException;
 
 public class ManagerServices {
@@ -23,8 +24,7 @@ public class ManagerServices {
     // renvoie false si l’action n’a pas pu être traitée 
     public Boolean updateManager(String username, PallierType newmanager) throws JAXBException, FileNotFoundException {
         // aller chercher le monde qui correspond au joueur
-        //World world = worldServices.getWorld(username);
-        World world = worldServices.getWorld();
+        World world = worldServices.getWorld(username);
 
         // trouver dans ce monde, le manager équivalent à celui passé
         // en paramètre
@@ -41,6 +41,7 @@ public class ManagerServices {
         }
         // débloquer le manager de ce produit
         manager.setUnlocked(true);
+        product.setManagerUnlocked(true);
         // soustraire de l'argent du joueur le cout du manager
         world.setMoney(world.getMoney() - manager.getSeuil());
         // sauvegarder les changements au monde

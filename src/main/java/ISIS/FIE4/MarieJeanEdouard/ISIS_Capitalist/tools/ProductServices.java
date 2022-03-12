@@ -4,6 +4,7 @@ import generated.PallierType;
 import generated.ProductType;
 import generated.World;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.xml.bind.JAXBException;
 
 public class ProductServices {
@@ -24,8 +25,7 @@ public class ProductServices {
      */
     public Boolean updateProduct(String username, ProductType newproduct) throws JAXBException, FileNotFoundException {
         // aller chercher le monde qui correspond au joueur
-//        World world = worldServices.getWorld(username);
-        World world = worldServices.getWorld();
+        World world = worldServices.getWorld(username);
 
         // trouver dans ce monde, le produit équivalent à celui passé
         // en paramètre
@@ -40,9 +40,18 @@ public class ProductServices {
         int qtchange = newproduct.getQuantite() - product.getQuantite();
         if (qtchange > 0) {
             // soustraire de l'argent du joueur le cout de la quantité
-            world.setMoney(world.getMoney() - newproduct.getCout() * qtchange);
+            double cout=0;
+            for(int i = product.getQuantite();i< newproduct.getQuantite();i++){
+                cout=+ coutDachatDesProduits(product, i);
+            }
+            
+            world.setMoney(world.getMoney() - cout);
+            
+            
+            
             // achetée et mettre à jour la quantité de product
             product.setQuantite(newproduct.getQuantite());
+            worldServices.checkUpgradeIsAvailable(world);
             // mise à jour du coût du produit 
             product.setCout(product.getCout() + product.getCroissance() * product.getCout());
             //mise à jour du score 
@@ -65,5 +74,14 @@ public class ProductServices {
         }
         return null;
     }
+    
+    public double coutDachatDesProduits(ProductType product,int qte){
+        return product.getCout()*Math.pow(product.getCroissance(),qte-1);
+    }
+    
+
+    
+    
+    
 
 }

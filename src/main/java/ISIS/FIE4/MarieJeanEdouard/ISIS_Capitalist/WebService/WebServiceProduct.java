@@ -4,6 +4,7 @@ import ISIS.FIE4.MarieJeanEdouard.ISIS_Capitalist.tools.ProductServices;
 import generated.ProductType;
 import generated.World;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.PUT;

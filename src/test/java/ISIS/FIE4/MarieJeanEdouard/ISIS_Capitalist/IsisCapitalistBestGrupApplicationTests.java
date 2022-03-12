@@ -1,7 +1,6 @@
 package ISIS.FIE4.MarieJeanEdouard.ISIS_Capitalist;
 
 import generated.PallierType;
-import generated.PalliersType;
 import generated.ProductType;
 import generated.TyperatioType;
 import generated.World;
