@@ -1,227 +1,421 @@
 <?xml version="1.0" encoding="utf-8"?>
 <world>
-    <name>Uranus</name>
+    <name>Simpson</name>
     <logo>logo</logo>
-    <money>6045</money>
-    <score>31415926535</score>
-    <totalangels>5</totalangels>
-    <activeangels>3</activeangels>
-    <angelbonus>1</angelbonus>
+    <money>0</money>
+    <score>0</score>
+    <totalangels>0</totalangels>
+    <activeangels>0</activeangels>
+    <angelbonus>2</angelbonus>
     <lastupdate>0</lastupdate>
     <products>
         <product>
             <id>1</id>
             <name>Donut</name>
-            <logo>icones/Donut.png</logo>
-            <cout>3.14</cout>
-            <croissance>2</croissance>
-            <revenu>3</revenu>
-            <vitesse>10</vitesse>
-            <quantite>12</quantite>
-            <timeleft>60</timeleft>
+            <logo>icones/donuts.svg</logo>
+            <cout>4</cout>
+            <croissance>1,07</croissance>
+            <revenu>1</revenu>
+            <vitesse>500</vitesse>
+            <quantite>1</quantite>
+            <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
             <palliers>
                 <pallier>
-                    <name>Donut</name>
+                    <name>Donut1</name>
                     <logo>icones/Donut.png</logo>
-                    <seuil>100</seuil>
+                    <seuil>20</seuil>
                     <idcible>1</idcible>
-                    <ratio>1</ratio>
+                    <ratio>2</ratio>
                     <typeratio>vitesse</typeratio>
-                    <unlocked>true</unlocked>
+                    <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
-                    <name>Donut</name>
+                    <name>Donut2</name>
                     <logo>icones/Donut.png</logo>
-                    <seuil>300</seuil>
+                    <seuil>50</seuil>
                     <idcible>1</idcible>
-                    <ratio>3.14</ratio>
-                    <typeratio>vitesse</typeratio>
-                    <unlocked>true</unlocked>
+                    <ratio>2</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
-                    <name>Donut</name>
+                    <name>Donut3</name>
                     <logo>icones/Donut.png</logo>
                     <seuil>1000</seuil>
                     <idcible>1</idcible>
-                    <ratio>9.28</ratio>
-                    <typeratio>vitesse</typeratio>
-                    <unlocked>true</unlocked>
+                    <ratio>2</ratio>
+                    <typeratio>ange</typeratio>
+                    <unlocked>false</unlocked>
                 </pallier>
             </palliers>
         </product>
         <product>
             <id>2</id>
-            <name>Voiture</name>
-            <logo>icones/homer_car.png</logo>
-            <cout>3145</cout>
-            <croissance>2</croissance>
-            <revenu>314</revenu>
-            <vitesse>123</vitesse>
-            <quantite>1</quantite>
-            <timeleft>120</timeleft>
-            <managerUnlocked>true</managerUnlocked>
+            <name>Colier</name>
+            <logo>icones/colier.svg</logo>
+            <cout>60</cout>
+            <croissance>1,15</croissance>
+            <revenu>60</revenu>
+            <vitesse>3000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
+            <managerUnlocked>false</managerUnlocked>
             <palliers>
                 <pallier>
-                    <name>Voiture</name>
-                    <logo>icones/homer_car.png</logo>
+                    <name>Colier1</name>
+                    <logo>icones/colier.svg</logo>
                     <seuil>10</seuil>
                     <idcible>2</idcible>
-                    <ratio>3.14</ratio>
+                    <ratio>2</ratio>
                     <typeratio>vitesse</typeratio>
-                    <unlocked>true</unlocked>
+                    <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
-                    <name>Voiture</name>
-                    <logo>icones/homer_car</logo>
+                    <name>Colier2</name>
+                    <logo>icones/colier.svg</logo>
                     <seuil>20</seuil>
                     <idcible>2</idcible>
-                    <ratio>9.28</ratio>
-                    <typeratio>vitesse</typeratio>
-                    <unlocked>true</unlocked>
+                    <ratio>30</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
-                    <name>Voiture</name>
-                    <logo>icones/homer_car.png</logo>
-                    <seuil>100</seuil>
+                    <name>Colier3</name>
+                    <logo>icones/colier.svg</logo>
+                    <seuil>1000</seuil>
                     <idcible>2</idcible>
-                    <ratio>12.14</ratio>
+                    <ratio>2</ratio>
+                    <typeratio>ange</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+            </palliers>
+        </product>
+        <product>
+            <id>3</id>
+            <name>Skate</name>
+            <logo>icones/skate.svg</logo>
+            <cout>720</cout>
+            <croissance>1,14</croissance>
+            <revenu>540</revenu>
+            <vitesse>6000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
+            <managerUnlocked>false</managerUnlocked>
+            <palliers>
+                <pallier>
+                    <name>Skate1</name>
+                    <logo>icones/skate.svg</logo>
+                    <seuil>10</seuil>
+                    <idcible>3</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Skate2</name>
+                    <logo>icones/skate.svg</logo>
+                    <seuil>50</seuil>
+                    <idcible>3</idcible>
+                    <ratio>2</ratio>
                     <typeratio>vitesse</typeratio>
-                    <unlocked>true</unlocked>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Skate3</name>
+                    <logo>icones/skate.svg</logo>
+                    <seuil>1000</seuil>
+                    <idcible>3</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>ange</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+            </palliers>
+        </product>
+        <product>
+            <id>4</id>
+            <name>Fusil</name>
+            <logo>icones/gun.svg</logo>
+            <cout>8640</cout>
+            <croissance>1,13</croissance>
+            <revenu>4320</revenu>
+            <vitesse>12000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
+            <managerUnlocked>false</managerUnlocked>
+            <palliers>
+                <pallier>
+                    <name>Fusil1</name>
+                    <logo>icones/gun.svg</logo>
+                    <seuil>20</seuil>
+                    <idcible>4</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Fusil2</name>
+                    <logo>icones/gun.svg</logo>
+                    <seuil>100</seuil>
+                    <idcible>4</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Fusil3</name>
+                    <logo>icones/gun.svg</logo>
+                    <seuil>2000</seuil>
+                    <idcible>4</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>ange</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+            </palliers>
+        </product>
+        <product>
+            <id>5</id>
+            <name>Biere</name>
+            <logo>icones/beer.svg</logo>
+            <cout>103680</cout>
+            <croissance>1,12</croissance>
+            <revenu>51840</revenu>
+            <vitesse>24000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
+            <managerUnlocked>false</managerUnlocked>
+            <palliers>
+                <pallier>
+                    <name>Biere1</name>
+                    <logo>icones/beer.svg</logo>
+                    <seuil>20</seuil>
+                    <idcible>5</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Biere2</name>
+                    <logo>icones/beer.svg</logo>
+                    <seuil>100</seuil>
+                    <idcible>5</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Biere3</name>
+                    <logo>icones/beer.svg</logo>
+                    <seuil>2000</seuil>
+                    <idcible>5</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>ange</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+            </palliers>
+        </product>
+        <product>
+            <id>6</id>
+            <name>Saxophone</name>
+            <logo>icones/sax.svg</logo>
+            <cout>1244160</cout>
+            <croissance>1,11</croissance>
+            <revenu>622080</revenu>
+            <vitesse>96000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
+            <managerUnlocked>false</managerUnlocked>
+            <palliers>
+                <pallier>
+                    <name>Saxophone</name>
+                    <logo>icones/sax.svg</logo>
+                    <seuil>40</seuil>
+                    <idcible>6</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Saxophone</name>
+                    <logo>icones/sax.svg</logo>
+                    <seuil>400</seuil>
+                    <idcible>6</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Saxophone</name>
+                    <logo>icones/sax.svg</logo>
+                    <seuil>4000</seuil>
+                    <idcible>6</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>ange</typeratio>
+                    <unlocked>false</unlocked>
                 </pallier>
             </palliers>
         </product>
     </products>
     <allunlocks>
         <pallier>
-            <name>str1234</name>
-            <logo>str1234</logo>
-            <seuil>123</seuil>
-            <idcible>123</idcible>
-            <ratio>3.1415926535</ratio>
+            <name>Unlock1</name>
+            <logo>icones/dollar.png</logo>
+            <seuil>50</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
             <typeratio>vitesse</typeratio>
-            <unlocked>true</unlocked>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Unlock2</name>
+            <logo>icones/dollar.png</logo>
+            <seuil>200</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Unlock3</name>
+            <logo>icones/dollar.png</logo>
+            <seuil>2000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>ange</typeratio>
+            <unlocked>false</unlocked>
         </pallier>
     </allunlocks>
     
     <upgrades>
         <pallier>
             <name>Upgrade1</name>
-            <logo>icones/cash_upgrade.png</logo>
-            <seuil>2000</seuil>
-            <idcible>1</idcible>
-            <ratio>1.2</ratio>
+            <logo>icones/central.png</logo>
+            <seuil>1000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
             <typeratio>vitesse</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Upgrade2</name>
-            <logo>icones/cash_upgrade.png</logo>
-            <seuil>3000</seuil>
-            <idcible>1</idcible>
-            <ratio>1.2</ratio>
+            <logo>icones/central.png</logo>
+            <seuil>2000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
             <typeratio>vitesse</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Upgrade3</name>
-            <logo>icones/cash_upgrade.png</logo>
-            <seuil>4000</seuil>
-            <idcible>1</idcible>
-            <ratio>1.2</ratio>
+            <logo>icones/central.png</logo>
+            <seuil>3000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
             <typeratio>vitesse</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Upgrade4</name>
-            <logo>icones/cash_upgrade.png</logo>
-            <seuil>5000</seuil>
-            <idcible>1</idcible>
-            <ratio>1.2</ratio>
+            <logo>icones/central.png</logo>
+            <seuil>4000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
             <typeratio>vitesse</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Upgrade5</name>
-            <logo>icones/cash_upgrade.png</logo>
-            <seuil>6000</seuil>
-            <idcible>1</idcible>
-            <ratio>1.2</ratio>
-            <typeratio>vitesse</typeratio>
+            <logo>icones/central.png</logo>
+            <seuil>10000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Upgrade6</name>
-            <logo>icones/cash_upgrade.png</logo>
-            <seuil>7000</seuil>
-            <idcible>2</idcible>
-            <ratio>1.2</ratio>
-            <typeratio>vitesse</typeratio>
+            <logo>icones/central.png</logo>
+            <seuil>20000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Upgrade7</name>
-            <logo>icones/cash_upgrade.png</logo>
-            <seuil>8000</seuil>
-            <idcible>2</idcible>
-            <ratio>1.2</ratio>
-            <typeratio>vitesse</typeratio>
+            <logo>icones/central.png</logo>
+            <seuil>30000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Upgrade8</name>
-            <logo>icones/cash_upgrade.png</logo>
-            <seuil>9000</seuil>
-            <idcible>2</idcible>
-            <ratio>1.2</ratio>
-            <typeratio>vitesse</typeratio>
+            <logo>icones/central.png</logo>
+            <seuil>40000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Upgrade9</name>
-            <logo>icones/cash_upgrade.png</logo>
-            <seuil>10000</seuil>
-            <idcible>2</idcible>
-            <ratio>1.2</ratio>
-            <typeratio>vitesse</typeratio>
+            <logo>icones/central.png</logo>
+            <seuil>1000000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Upgrade10</name>
-            <logo>icones/cash_upgrade.png</logo>
-            <seuil>11000</seuil>
-            <idcible>2</idcible>
-            <ratio>1.2</ratio>
-            <typeratio>vitesse</typeratio>
+            <logo>icones/central.png</logo>
+            <seuil>2000000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>
+
+
+        
     </upgrades>
     
     <angelupgrades>
         <pallier>
-            <name>Maggie</name>
-            <logo>icones/maggie_angel.png</logo>
-            <seuil>3500</seuil>
-            <idcible>1</idcible>
-            <ratio>1.5</ratio>
+            <name>Kevin</name>
+            <logo>icones/burns.png</logo>
+            <seuil>10000</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
             <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Barney</name>
-            <logo>icones/barney_angel.png</logo>
-            <seuil>6500</seuil>
-            <idcible>2</idcible>
-            <ratio>1.6</ratio>
-            <typeratio>gain</typeratio>
+            <name>Bob</name>
+            <logo>icones/burns.png</logo>
+            <seuil>100000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Lisa</name>
-            <logo>icones/Lisa_angel.png</logo>
-            <seuil>9500</seuil>
-            <idcible>1</idcible>
-            <ratio>1.8</ratio>
+            <name>Jackie</name>
+            <logo>burns.png</logo>
+            <seuil>1000000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>ange</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Jordan</name>
+            <logo>burns.png</logo>
+            <seuil>1000000000000</seuil>
+            <idcible>0</idcible>
+            <ratio>5</ratio>
             <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
@@ -230,19 +424,55 @@
         <pallier>
             <name>Homer</name>
             <logo>icones/homer.png</logo>
-            <seuil>100</seuil>
+            <seuil>1000</seuil>
             <idcible>1</idcible>
             <ratio>null</ratio>
-            <typeratio>vitesse</typeratio>
+            <typeratio>null</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Marge</name>
             <logo>icones/marge.png</logo>
-            <seuil>500</seuil>
+            <seuil>15000</seuil>
             <idcible>2</idcible>
             <ratio>null</ratio>
-            <typeratio>vitesse</typeratio>
+            <typeratio>null</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Bart</name>
+            <logo>icones/bart.png</logo>
+            <seuil>100000</seuil>
+            <idcible>3</idcible>
+            <ratio>null</ratio>
+            <typeratio>null</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Maggie</name>
+            <logo>icones/maggie.png</logo>
+            <seuil>500000</seuil>
+            <idcible>4</idcible>
+            <ratio>null</ratio>
+            <typeratio>null</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Barney</name>
+            <logo>icones/barney.png</logo>
+            <seuil>1200000</seuil>
+            <idcible>5</idcible>
+            <ratio>null</ratio>
+            <typeratio>null</typeratio>
+            <unlocked>null</unlocked>
+        </pallier>
+        <pallier>
+            <name>Lisa</name>
+            <logo>icones/lisa.png</logo>
+            <seuil>10000000</seuil>
+            <idcible>6</idcible>
+            <ratio>null</ratio>
+            <typeratio>null</typeratio>
             <unlocked>false</unlocked>
         </pallier>
     </managers>
