@@ -1,4 +1,3 @@
-
 package ISIS.FIE4.MarieJeanEdouard.ISIS_Capitalist.WebService;
 
 import ISIS.FIE4.MarieJeanEdouard.ISIS_Capitalist.tools.WorldServices;
