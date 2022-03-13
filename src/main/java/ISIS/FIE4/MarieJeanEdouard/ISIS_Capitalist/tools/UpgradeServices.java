@@ -34,7 +34,7 @@ public class UpgradeServices {
             return false;
         }
 
-        if (world.getMoney() > upgrade.getSeuil() && upgrade.isUnlocked() == false) {
+        if (world.getMoney() >= upgrade.getSeuil() && upgrade.isUnlocked() == false) {
             if (newUpgrade.getIdcible() == 0) {
                 switch (upgrade.getTyperatio()) {
                     case GAIN:

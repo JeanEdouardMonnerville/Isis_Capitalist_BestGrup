@@ -25,7 +25,7 @@ public class AngelUpgradeService {
             return false;
         }
 
-        if (world.getActiveangels() > angelUpgrade.getSeuil() && angelUpgrade.isUnlocked() == false) {
+        if (world.getActiveangels() >= angelUpgrade.getSeuil() && angelUpgrade.isUnlocked() == false) {
             //On enregistre les anges gagné
             world.setTotalangels(world.getTotalangels() + world.getActiveangels());
             //On soustrait le coût de l'ange

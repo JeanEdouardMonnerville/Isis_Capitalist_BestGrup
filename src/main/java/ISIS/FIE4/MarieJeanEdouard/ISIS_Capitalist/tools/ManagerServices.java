@@ -41,7 +41,7 @@ public class ManagerServices {
             return false;
         }
 
-        if (world.getMoney() > manager.getSeuil()) {
+        if (world.getMoney() >= manager.getSeuil()) {
             // soustraire de l'argent du joueur le cout du manager
             world.setMoney(world.getMoney() - manager.getSeuil());
             // débloquer le manager de ce produit
