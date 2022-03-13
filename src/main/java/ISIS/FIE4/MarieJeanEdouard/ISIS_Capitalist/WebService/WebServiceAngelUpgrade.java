@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class WebServiceAngelUpgrade {
     private AngelUpgradeService services;
 
-    public WebServiceAngelUpgrade(AngelUpgradeService services) {
-        this.services = services;
+    public WebServiceAngelUpgrade() {
+        this.services = new AngelUpgradeService();
     }
     
     @PUT

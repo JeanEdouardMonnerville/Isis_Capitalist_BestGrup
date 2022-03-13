@@ -43,7 +43,6 @@ public class WorldServices {
         }
         tool.updateScore(world);
         checkUpgradeIsAvailable(world);
-        calculNbAngeActif(world);
         return world;
     }
 
@@ -83,11 +82,14 @@ public class WorldServices {
             Unmarshaller unmarshaller = cont.createUnmarshaller();
             World NewWorld = (World) unmarshaller.unmarshal(input);
 
+            
             //Récupération des données du monde actuel
             InputStream input2 = getClass().getClassLoader().getResourceAsStream(pseudo + "-world.xml");
             Unmarshaller unmarshaller2 = cont.createUnmarshaller();
             World OldWorld = (World) unmarshaller.unmarshal(input2);
-
+            
+            OldWorld.setActiveangels(calculNbAngeActif(OldWorld));
+            
             //On garde les anges et le score
             NewWorld.setScore(OldWorld.getScore());
             NewWorld.setActiveangels(OldWorld.getActiveangels());

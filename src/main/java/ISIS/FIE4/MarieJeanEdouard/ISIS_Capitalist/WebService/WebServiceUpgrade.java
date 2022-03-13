@@ -18,9 +18,10 @@ public class WebServiceUpgrade {
     
     private UpgradeServices services;
 
-    public WebServiceUpgrade(UpgradeServices services) {
-        this.services = services;
+    public WebServiceUpgrade() {
+        this.services = new UpgradeServices();
     }
+
     
 
     @PUT
