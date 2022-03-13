@@ -23,7 +23,7 @@
             <palliers>
                 <pallier>
                     <name>Donut1</name>
-                    <logo>icones/Donut.png</logo>
+                    <logo>icones/donuts.svg</logo>
                     <seuil>20</seuil>
                     <idcible>1</idcible>
                     <ratio>2</ratio>
@@ -32,7 +32,7 @@
                 </pallier>
                 <pallier>
                     <name>Donut2</name>
-                    <logo>icones/Donut.png</logo>
+                    <logo>icones/donuts.svg</logo>
                     <seuil>50</seuil>
                     <idcible>1</idcible>
                     <ratio>2</ratio>
@@ -41,7 +41,7 @@
                 </pallier>
                 <pallier>
                     <name>Donut3</name>
-                    <logo>icones/Donut.png</logo>
+                    <logo>icones/donuts.svg</logo>
                     <seuil>1000</seuil>
                     <idcible>1</idcible>
                     <ratio>2</ratio>
@@ -403,7 +403,7 @@
         </pallier>
         <pallier>
             <name>Jackie</name>
-            <logo>burns.png</logo>
+            <logo>icones/burns.png</logo>
             <seuil>1000000</seuil>
             <idcible>0</idcible>
             <ratio>2</ratio>
@@ -412,7 +412,7 @@
         </pallier>
         <pallier>
             <name>Jordan</name>
-            <logo>burns.png</logo>
+            <logo>icones/burns.png</logo>
             <seuil>1000000000000</seuil>
             <idcible>0</idcible>
             <ratio>5</ratio>
@@ -424,7 +424,7 @@
         <pallier>
             <name>Homer</name>
             <logo>icones/homer.png</logo>
-            <seuil>1000</seuil>
+            <seuil>10</seuil>
             <idcible>1</idcible>
             <ratio>null</ratio>
             <typeratio>null</typeratio>
