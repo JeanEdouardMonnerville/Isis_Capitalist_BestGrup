@@ -45,7 +45,7 @@
                     <seuil>1000</seuil>
                     <idcible>1</idcible>
                     <ratio>2</ratio>
-                    <typeratio>ange</typeratio>
+                    <typeratio>vitesse</typeratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
@@ -86,7 +86,7 @@
                     <seuil>1000</seuil>
                     <idcible>2</idcible>
                     <ratio>2</ratio>
-                    <typeratio>ange</typeratio>
+                    <typeratio>vitesse</typeratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
@@ -127,7 +127,7 @@
                     <seuil>1000</seuil>
                     <idcible>3</idcible>
                     <ratio>2</ratio>
-                    <typeratio>ange</typeratio>
+                    <typeratio>vitesse</typeratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
@@ -168,7 +168,7 @@
                     <seuil>2000</seuil>
                     <idcible>4</idcible>
                     <ratio>2</ratio>
-                    <typeratio>ange</typeratio>
+                    <typeratio>vitesse</typeratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
@@ -209,7 +209,7 @@
                     <seuil>2000</seuil>
                     <idcible>5</idcible>
                     <ratio>2</ratio>
-                    <typeratio>ange</typeratio>
+                    <typeratio>vitesse</typeratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
@@ -227,7 +227,7 @@
             <managerUnlocked>false</managerUnlocked>
             <palliers>
                 <pallier>
-                    <name>Saxophone</name>
+                    <name>Saxophone1</name>
                     <logo>icones/sax.svg</logo>
                     <seuil>40</seuil>
                     <idcible>6</idcible>
@@ -236,7 +236,7 @@
                     <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
-                    <name>Saxophone</name>
+                    <name>Saxophone2</name>
                     <logo>icones/sax.svg</logo>
                     <seuil>400</seuil>
                     <idcible>6</idcible>
@@ -245,12 +245,12 @@
                     <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
-                    <name>Saxophone</name>
+                    <name>Saxophone3</name>
                     <logo>icones/sax.svg</logo>
                     <seuil>4000</seuil>
                     <idcible>6</idcible>
                     <ratio>2</ratio>
-                    <typeratio>ange</typeratio>
+                    <typeratio>vitesse</typeratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
@@ -281,102 +281,139 @@
             <seuil>2000</seuil>
             <idcible>0</idcible>
             <ratio>2</ratio>
-            <typeratio>ange</typeratio>
+            <typeratio>vitesse</typeratio>
             <unlocked>false</unlocked>
         </pallier>
     </allunlocks>
     
     <upgrades>
         <pallier>
-            <name>Upgrade1</name>
-            <logo>icones/central.png</logo>
-            <seuil>1000</seuil>
-            <idcible>0</idcible>
-            <ratio>2</ratio>
-            <typeratio>vitesse</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Upgrade2</name>
-            <logo>icones/central.png</logo>
-            <seuil>2000</seuil>
-            <idcible>0</idcible>
-            <ratio>2</ratio>
-            <typeratio>vitesse</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Upgrade3</name>
-            <logo>icones/central.png</logo>
-            <seuil>3000</seuil>
-            <idcible>0</idcible>
-            <ratio>2</ratio>
-            <typeratio>vitesse</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Upgrade4</name>
-            <logo>icones/central.png</logo>
-            <seuil>4000</seuil>
-            <idcible>0</idcible>
-            <ratio>2</ratio>
-            <typeratio>vitesse</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Upgrade5</name>
-            <logo>icones/central.png</logo>
-            <seuil>10000</seuil>
-            <idcible>0</idcible>
-            <ratio>2</ratio>
+            <name>Donut</name>
+            <logo>icones/donuts.svg</logo>
+            <seuil>15000</seuil>
+            <idcible>1</idcible>
+            <ratio>3</ratio>
             <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Upgrade6</name>
-            <logo>icones/central.png</logo>
-            <seuil>20000</seuil>
-            <idcible>0</idcible>
-            <ratio>2</ratio>
+            <name>Colier</name>
+            <logo>icones/colier.svg</logo>
+            <seuil>15000</seuil>
+            <idcible>2</idcible>
+            <ratio>3</ratio>
             <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Upgrade7</name>
-            <logo>icones/central.png</logo>
-            <seuil>30000</seuil>
-            <idcible>0</idcible>
-            <ratio>2</ratio>
+            <name>Skate</name>
+            <logo>icones/skate.svg</logo>
+            <seuil>15000</seuil>
+            <idcible>3</idcible>
+            <ratio>3</ratio>
             <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Upgrade8</name>
-            <logo>icones/central.png</logo>
-            <seuil>40000</seuil>
-            <idcible>0</idcible>
-            <ratio>2</ratio>
+            <name>Fusil</name>
+            <logo>icones/gun.svg</logo>
+            <seuil>100000</seuil>
+            <idcible>4</idcible>
+            <ratio>3</ratio>
             <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Upgrade9</name>
-            <logo>icones/central.png</logo>
-            <seuil>1000000</seuil>
-            <idcible>0</idcible>
-            <ratio>2</ratio>
-            <typeratio>ange</typeratio>
+            <name>Biere</name>
+            <logo>icones/beer.svg</logo>
+            <seuil>200000</seuil>
+            <idcible>5</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Upgrade10</name>
-            <logo>icones/central.png</logo>
-            <seuil>2000000</seuil>
-            <idcible>0</idcible>
-            <ratio>2</ratio>
-            <typeratio>ange</typeratio>
+            <name>Saxophone</name>
+            <logo>icones/sax.svg</logo>
+            <seuil>3000000</seuil>
+            <idcible>6</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
+        <pallier>
+            <name>Nucleaire Gain</name>
+            <logo>icones/central.png</logo>
+            <seuil>3500000</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Donut Big gain</name>
+            <logo>icones/donuts.svg</logo>
+            <seuil>4000000</seuil>
+            <idcible>1</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Colier Big gain</name>
+            <logo>icones/colier.svg</logo>
+            <seuil>6000000</seuil>
+            <idcible>2</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Skate Big gain</name>
+            <logo>icones/skate.svg</logo>
+            <seuil>10000000</seuil>
+            <idcible>3</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Fusil Big gain</name>
+            <logo>icones/gun.svg</logo>
+            <seuil>20000000</seuil>
+            <idcible>4</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Biere Big gain</name>
+            <logo>icones/beer.svg</logo>
+            <seuil>50000000</seuil>
+            <idcible>5</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Saxophone Big gain</name>
+            <logo>icones/sax.svg</logo>
+            <seuil>1000000000</seuil>
+            <idcible>6</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Nucleaire Big Gain</name>
+            <logo>icones/central.png</logo>
+            <seuil>5000000000</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+
 
 
         
