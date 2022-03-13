@@ -17,11 +17,12 @@ public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
         register(WebServiceWorld.class);
+        register(CORSResponseFilter.class);
         register(WebServiceProduct.class);
         register(WebServiceManager.class);
         register(WebServiceUpgrade.class);
         register(WebServiceAngelUpgrade.class);
-        register(CORSResponseFilter.class);
+        
     }
 
 }
