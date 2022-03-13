@@ -43,12 +43,15 @@ public class ProductServices {
         if (qtchange > 0) {
             //calcule cout
             double cout = 0;
-            for (int i = product.getQuantite(); i < newproduct.getQuantite(); i++) {
-                cout = +coutDachatDesProduits(product, i);
+            for (int i = 0; i < qtchange; i++) {
+                cout = cout + coutDachatDesProduits(product, i);
             }
-            if (world.getMoney() > cout) {
+            if (world.getMoney() >= cout) {
                 // soustraire de l'argent du joueur le cout de la quantité
                 world.setMoney(world.getMoney() - cout);
+                System.out.println(cout);
+                //Mettre à jour le coût d'un produit
+                product.setCout(coutDachatDesProduits(product, qtchange));
                 // achetée et mettre à jour la quantité de product
                 product.setQuantite(newproduct.getQuantite());
                 checkIfUnlockIsAvailable(product, world);
@@ -75,7 +78,7 @@ public class ProductServices {
     }
 
     public double coutDachatDesProduits(ProductType product, int qte) {
-        return product.getCout() * Math.pow(product.getCroissance(), qte - 1);
+        return product.getCout() * Math.pow(product.getCroissance(), qte);
     }
 
     private double calculRevenu(ProductType product, int qte, World world) {
