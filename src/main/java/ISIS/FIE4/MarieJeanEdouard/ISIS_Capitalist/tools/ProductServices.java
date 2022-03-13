@@ -10,9 +10,11 @@ import javax.xml.bind.JAXBException;
 public class ProductServices {
 
     private WorldServices worldServices;
+    private ApplyUpgrade applyUpgrade;
 
     public ProductServices() {
         this.worldServices = new WorldServices();
+        applyUpgrade=new ApplyUpgrade();
     }
 
     /**
@@ -92,13 +94,10 @@ public class ProductServices {
                 pt.setUnlocked(true);
                 switch(pt.getTyperatio()){
                     case GAIN:
-                        applyUpgradeGain(pt, product);
+                        applyUpgrade.applyUpgradeGain(pt, product);
                         break;
                     case VITESSE:
-                        applyUpgradeVitesse(pt, product);
-                        break;
-                    case ANGE:
-                        applyAngeUpgrade(pt, world);
+                        applyUpgrade.applyUpgradeVitesse(pt, product);
                         break;
                 }
             }
@@ -107,18 +106,5 @@ public class ProductServices {
         return true;
     }
 
-    public void applyUpgradeGain(PallierType upgrade, ProductType product) {
-        product.setRevenu(product.getRevenu() * upgrade.getRatio());
-        upgrade.setUnlocked(true);
-    }
 
-    public void applyUpgradeVitesse(PallierType upgrade, ProductType product) {
-        product.setVitesse((int) (product.getVitesse() / upgrade.getRatio()));
-        upgrade.setUnlocked(true);
-    }
-
-    private void applyAngeUpgrade(PallierType upgrade, World world) {
-        world.setAngelbonus((int) (world.getAngelbonus() + upgrade.getRatio()));
-        upgrade.setUnlocked(true);
-    }
 }

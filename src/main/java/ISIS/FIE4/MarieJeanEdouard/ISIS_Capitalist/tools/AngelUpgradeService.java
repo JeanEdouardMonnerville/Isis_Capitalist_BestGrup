@@ -9,38 +9,40 @@ import javax.xml.bind.JAXBException;
 public class AngelUpgradeService {
 
     private WorldServices worldServices;
+    private ApplyUpgrade applyUpgrade;
+    private ProductServices productServices;
 
     public AngelUpgradeService() {
         worldServices = new WorldServices();
+        applyUpgrade = new ApplyUpgrade();
+        productServices = new ProductServices();
     }
 
     public boolean updateAngelUpgrade(PallierType newAngelUpgrade, String username) throws JAXBException, FileNotFoundException {
         World world = worldServices.getWorld(username);
-        PallierType angelUpgrade = findAngelByName(username, world);
+        PallierType angelUpgrade = findAngelByName(newAngelUpgrade.getName(), world);
         if (angelUpgrade == null) {
             return false;
         }
 
-        if (world.getActiveangels() > angelUpgrade.getSeuil() && angelUpgrade.isUnlocked()==false) {
+        if (world.getActiveangels() > angelUpgrade.getSeuil() && angelUpgrade.isUnlocked() == false) {
             //On enregistre les anges gagné
-            world.setTotalangels(world.getTotalangels()+world.getActiveangels());
+            world.setTotalangels(world.getTotalangels() + world.getActiveangels());
             //On soustrait le coût de l'ange
-            world.setTotalangels(world.getActiveangels() - angelUpgrade.getSeuil());
-            //On indique qu'il est déblocké
-            angelUpgrade.setUnlocked(true);
-            
+            world.setActiveangels(world.getActiveangels() - angelUpgrade.getSeuil());
             //On applique son bonus
-            switch(angelUpgrade.getTyperatio()){
+            switch (angelUpgrade.getTyperatio()) {
                 case GAIN:
-                    applyAngelUpgradeForAllGain(angelUpgrade, world);
+                    applyUpgrade.applyUpgradeForAllGain(angelUpgrade, world);
                     break;
                 case VITESSE:
-                    applyAngelUpgradeForAllVitesse(angelUpgrade, world);
+                    applyUpgrade.applyUpgradeForAllVitesse(angelUpgrade, world);
                     break;
                 case ANGE:
-                    applyAngeUpgrade(newAngelUpgrade, world);
+                    applyUpgrade.applyAngeUpgrade(angelUpgrade, world);
                     break;
             }
+
         }
 
         worldServices.saveWorldToXml(world, username);
@@ -55,22 +57,6 @@ public class AngelUpgradeService {
             }
         }
         return result;
-    }
-
-    public void applyAngelUpgradeForAllGain(PallierType ange, World world) {
-        for (ProductType product : world.getProducts().getProduct()) {
-            product.setRevenu(product.getRevenu() * ange.getRatio());
-        }
-    }
-
-    public void applyAngelUpgradeForAllVitesse(PallierType ange, World world) {
-        for (ProductType product : world.getProducts().getProduct()) {
-            product.setRevenu(product.getVitesse()/ ange.getRatio());
-        }
-    }
-
-    private void applyAngeUpgrade(PallierType ange, World world) {
-        world.setAngelbonus((int) (world.getAngelbonus() + ange.getRatio()));
     }
 
 }
