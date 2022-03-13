@@ -9,6 +9,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.xml.bind.JAXBException;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Path("generic")
 public class WebServiceAngelUpgrade {
@@ -19,9 +20,9 @@ public class WebServiceAngelUpgrade {
     }
     
     @PUT
-    @Path("upgrade")
+    @Path("angelupgrade")
     @Consumes({"application/xml","application/json"})
-    public void updateAngelUpgrade(@Context HttpServletRequest request,PallierType newAngelUpgrade) throws JAXBException, FileNotFoundException{
+    public void updateAngelUpgrade(@Context HttpServletRequest request,@RequestBody PallierType newAngelUpgrade) throws JAXBException, FileNotFoundException{
         String username = request.getHeader("X-user");
         services.updateAngelUpgrade(newAngelUpgrade,username);
     }

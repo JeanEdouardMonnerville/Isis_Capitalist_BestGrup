@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.xml.bind.JAXBException;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Path("generic")
 public class WebServiceUpgrade {
@@ -24,8 +25,8 @@ public class WebServiceUpgrade {
 
     @PUT
     @Path("upgrade")
-    //@Consumes({"application/xml","application/json"})
-    public void updateUpgrade(@Context HttpServletRequest request,PallierType newUpgrade) throws JAXBException, FileNotFoundException{
+    @Consumes({"application/xml","application/json"})
+    public void updateUpgrade(@Context HttpServletRequest request,@RequestBody PallierType newUpgrade) throws JAXBException, FileNotFoundException{
         String username= request.getHeader("X-user");
         services.updateUpgrade(newUpgrade,username);
     }

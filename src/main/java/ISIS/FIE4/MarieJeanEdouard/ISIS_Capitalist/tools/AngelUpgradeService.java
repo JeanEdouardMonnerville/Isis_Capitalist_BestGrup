@@ -65,7 +65,7 @@ public class AngelUpgradeService {
 
     public void applyAngelUpgradeForAllVitesse(PallierType ange, World world) {
         for (ProductType product : world.getProducts().getProduct()) {
-            product.setRevenu(product.getTimeleft() * ange.getRatio());
+            product.setRevenu(product.getVitesse()/ ange.getRatio());
         }
     }
 

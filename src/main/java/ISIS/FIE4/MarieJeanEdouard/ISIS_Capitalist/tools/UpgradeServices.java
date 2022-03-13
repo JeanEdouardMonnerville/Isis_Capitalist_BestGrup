@@ -58,7 +58,7 @@ public class UpgradeServices {
 
     public void applyUpgradeForAllVitesse(PallierType upgrade, World world) {
         for (ProductType product : world.getProducts().getProduct()) {
-            product.setRevenu(product.getTimeleft() * upgrade.getRatio());
+            product.setVitesse((int) (product.getVitesse()/ upgrade.getRatio()));
         }
     }
 

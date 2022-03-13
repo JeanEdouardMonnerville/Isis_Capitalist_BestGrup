@@ -14,7 +14,7 @@
             <name>Donut</name>
             <logo>icones/donuts.svg</logo>
             <cout>4</cout>
-            <croissance>1,07</croissance>
+            <croissance>1.07</croissance>
             <revenu>1</revenu>
             <vitesse>500</vitesse>
             <quantite>1</quantite>
@@ -55,7 +55,7 @@
             <name>Colier</name>
             <logo>icones/colier.svg</logo>
             <cout>60</cout>
-            <croissance>1,15</croissance>
+            <croissance>1.15</croissance>
             <revenu>60</revenu>
             <vitesse>3000</vitesse>
             <quantite>0</quantite>
@@ -76,7 +76,7 @@
                     <logo>icones/colier.svg</logo>
                     <seuil>20</seuil>
                     <idcible>2</idcible>
-                    <ratio>30</ratio>
+                    <ratio>2</ratio>
                     <typeratio>gain</typeratio>
                     <unlocked>false</unlocked>
                 </pallier>
@@ -96,7 +96,7 @@
             <name>Skate</name>
             <logo>icones/skate.svg</logo>
             <cout>720</cout>
-            <croissance>1,14</croissance>
+            <croissance>1.14</croissance>
             <revenu>540</revenu>
             <vitesse>6000</vitesse>
             <quantite>0</quantite>
@@ -137,7 +137,7 @@
             <name>Fusil</name>
             <logo>icones/gun.svg</logo>
             <cout>8640</cout>
-            <croissance>1,13</croissance>
+            <croissance>1.13</croissance>
             <revenu>4320</revenu>
             <vitesse>12000</vitesse>
             <quantite>0</quantite>
@@ -178,7 +178,7 @@
             <name>Biere</name>
             <logo>icones/beer.svg</logo>
             <cout>103680</cout>
-            <croissance>1,12</croissance>
+            <croissance>1.12</croissance>
             <revenu>51840</revenu>
             <vitesse>24000</vitesse>
             <quantite>0</quantite>
@@ -219,7 +219,7 @@
             <name>Saxophone</name>
             <logo>icones/sax.svg</logo>
             <cout>1244160</cout>
-            <croissance>1,11</croissance>
+            <croissance>1.11</croissance>
             <revenu>622080</revenu>
             <vitesse>96000</vitesse>
             <quantite>0</quantite>

@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.xml.bind.JAXBException;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Path("generic")
 public class WebServiceProduct {
@@ -25,7 +26,7 @@ public class WebServiceProduct {
     @Path("product")
     @PUT
     @Consumes({"application/xml","application/json"})
-    public void updtateProduct(@Context HttpServletRequest request,ProductType newProduct) throws JAXBException, FileNotFoundException{
+    public void updtateProduct(@Context HttpServletRequest request,@RequestBody ProductType newProduct) throws JAXBException, FileNotFoundException{
         String username = request.getHeader("X-user");
         services.updateProduct(username, newProduct);
     }

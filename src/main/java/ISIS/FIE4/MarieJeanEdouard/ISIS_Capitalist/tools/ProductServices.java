@@ -57,10 +57,6 @@ public class ProductServices {
             // initialiser product.timeleft à product.vitesse
             // pour lancer la production
             product.setTimeleft(product.getVitesse());
-            //mise à jour de l'argent gagné grâce à la production
-            world.setMoney(world.getMoney() + calculRevenu(product, newproduct.getQuantite(), world));
-            //mise à jour du score
-            world.setScore(world.getScore() + calculRevenu(product, newproduct.getQuantite(), world));
         }
         // sauvegarder les changements du monde
         worldServices.saveWorldToXml(world, username);
@@ -117,7 +113,7 @@ public class ProductServices {
     }
 
     public void applyUpgradeVitesse(PallierType upgrade, ProductType product) {
-        product.setRevenu(product.getTimeleft() * upgrade.getRatio());
+        product.setVitesse((int) (product.getVitesse() / upgrade.getRatio()));
         upgrade.setUnlocked(true);
     }
 

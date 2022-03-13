@@ -25,36 +25,46 @@ public class WorldServices {
 
     public World readWorldFromXml(String pseudo) throws JAXBException, FileNotFoundException {
 
-        World result = null;
+        World world = null;
         try {
-            JAXBContext context = JAXBContext.newInstance(World.class);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            InputStream input = getClass().getClassLoader().getResourceAsStream(pseudo + "-world.xml");
-            if (input == null) {
-                input = getClass().getClassLoader().getResourceAsStream("World.xml");
+            JAXBContext cont = JAXBContext.newInstance(World.class);
+            Unmarshaller u = cont.createUnmarshaller();
+            File file = new File(filePath + pseudo + "-world.xml");
+            if (file.exists()) {
+                world = (World) u.unmarshal(file);
+            } else {
+                InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");
+                world = (World) u.unmarshal(input);
+                assert input != null;
+                input.close();
             }
-            result = (World) unmarshaller.unmarshal(input);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        tool.updateScore(result);
-        checkUpgradeIsAvailable(result);
-        calculNbAngeActif(result);
-        return result;
+        tool.updateScore(world);
+        checkUpgradeIsAvailable(world);
+        calculNbAngeActif(world);
+        return world;
     }
 
     public void saveWorldToXml(World world, String pseudo) {
         try {
-            JAXBContext cont = JAXBContext.newInstance(World.class);
+            JAXBContext cont = JAXBContext.newInstance(World.class
+            );
             Marshaller m = cont.createMarshaller();
             File file = new File(filePath + pseudo + "-world.xml");
-            if (file.exists()) {
-                m.marshal(world, file);
-            } else {
+
+            if (!file.exists()) {
                 OutputStream output = new FileOutputStream(filePath + pseudo + "-world.xml");
                 m.marshal(world, output);
                 output.close();
+            } else {
+                OutputStream output = new FileOutputStream(filePath + pseudo + "-world.xml");
+                m.marshal(world, output);
+
+                output.close();
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +77,8 @@ public class WorldServices {
     public void deleteworld(String pseudo) {
         try {
             //Récupération des données du monde initial
-            JAXBContext cont = JAXBContext.newInstance(World.class);
+            JAXBContext cont = JAXBContext.newInstance(World.class
+            );
             InputStream input = getClass().getClassLoader().getResourceAsStream("World.xml");
             Unmarshaller unmarshaller = cont.createUnmarshaller();
             World NewWorld = (World) unmarshaller.unmarshal(input);
@@ -124,7 +135,7 @@ public class WorldServices {
 
     public void applyUpgradeForAllVitesse(PallierType upgrade, World world) {
         for (ProductType product : world.getProducts().getProduct()) {
-            product.setRevenu(product.getTimeleft() * upgrade.getRatio());
+            product.setVitesse((int) (product.getVitesse() / upgrade.getRatio()));
         }
         upgrade.setUnlocked(true);
     }

@@ -32,41 +32,26 @@ public class GenericResources {
                     int quantiteProduit = (int) (deltaTime / product.getVitesse());
 
                     //Mise à jour des gains gagnés pendant l'inaction
-                    world.setScore(world.getScore() + calculRevenu(product, quantiteProduit,world));
-                    world.setMoney(world.getMoney() + calculRevenu(product, quantiteProduit,world));
-                    //On calcule le temps de production effectué + le reste de 
-                    //la division euclidienne correspondant au temps qui ne 
-                    //permet pas de produire un nouveau produit.
-                    long majTimeleft = (product.getVitesse() - product.getTimeleft())
-                            + (deltaTime % product.getVitesse());
+                    world.setScore(world.getScore() + calculRevenu(product, quantiteProduit, world));
+                    world.setMoney(world.getMoney() + calculRevenu(product, quantiteProduit, world));
 
-                    if (majTimeleft > product.getVitesse()) {
-
-                        //Mise à jour des gains gagnés pendant l'inaction
-                        world.setScore(world.getScore() + calculRevenu(product, 1,world));
-                        world.setMoney(world.getMoney() + calculRevenu(product, 1,world));
-                        //Mise à jour time left
-                        product.setTimeleft(product.getVitesse() - majTimeleft);
-                    } else {
-                        product.setTimeleft(majTimeleft);
-                    }
                 } else {
-                    if (product.getTimeleft() != 0 & product.getTimeleft() < 0) {
+                    if (product.getTimeleft() != 0 && product.getTimeleft() < deltaTime) {
                         //Mise à jour des gains gagnés pendant l'inaction
-                        world.setScore(world.getScore() + calculRevenu(product, 1,world));
-                        world.setMoney(world.getMoney() + calculRevenu(product, 1,world));
-                    } else {
+                        world.setScore(world.getScore() + calculRevenu(product, 1, world));
+                        world.setMoney(world.getMoney() + calculRevenu(product, 1, world));
+                        product.setTimeleft(0);
+                    } else if (product.getQuantite() != 0 && product.getTimeleft() != 0 && product.getTimeleft() > deltaTime) {
                         product.setTimeleft(product.getTimeleft() - deltaTime);
                     }
                 }
             }
         }
-
     }
 
-    private double calculRevenu(ProductType product, int qte,World world) {
+    private double calculRevenu(ProductType product, int qte, World world) {
         double result = 0;
-        result = product.getRevenu() * qte;
+        result = product.getRevenu() * qte * product.getQuantite();
 
         //Ajout de l'impact des anges 
         if (world.getActiveangels() >= 1) {

@@ -18,6 +18,7 @@ public class ManagerServices {
     // renvoie false si l’action n’a pas pu être traitée 
     public ManagerServices() {
         this.worldServices = new WorldServices();
+        this.productService = new ProductServices();
     }
 
     // prend en paramètre le pseudo du joueur et le manager acheté.
@@ -39,11 +40,17 @@ public class ManagerServices {
         if (product == null) {
             return false;
         }
-        // débloquer le manager de ce produit
-        manager.setUnlocked(true);
-        product.setManagerUnlocked(true);
-        // soustraire de l'argent du joueur le cout du manager
-        world.setMoney(world.getMoney() - manager.getSeuil());
+
+        if (world.getMoney() > manager.getSeuil()) {
+            // soustraire de l'argent du joueur le cout du manager
+            world.setMoney(world.getMoney() - manager.getSeuil());
+            // débloquer le manager de ce produit
+            manager.setUnlocked(true);
+            product.setManagerUnlocked(true);
+        }else{
+            return false;
+        }
+
         // sauvegarder les changements au monde
         worldServices.saveWorldToXml(world, username);
         return true;
@@ -51,7 +58,7 @@ public class ManagerServices {
 
     private PallierType findManagerByName(World world, String name) {
         for (PallierType pt : world.getManagers().getPallier()) {
-            if (name == pt.getName()) {
+            if (name.equals(pt.getName())) {
                 return pt;
             }
         }
