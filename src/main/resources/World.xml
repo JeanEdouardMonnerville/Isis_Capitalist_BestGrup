@@ -450,7 +450,7 @@
         <pallier>
             <name>Jordan</name>
             <logo>icones/burns.png</logo>
-            <seuil>1000000000000</seuil>
+            <seuil>10000000</seuil>
             <idcible>0</idcible>
             <ratio>5</ratio>
             <typeratio>gain</typeratio>
